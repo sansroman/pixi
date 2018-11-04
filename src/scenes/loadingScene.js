@@ -25,9 +25,8 @@ export default _ => {
     fill: '#e1b56e'
   })
 
-  const explosion = new PIXI.extras.AnimatedSprite(resources.loading.spritesheet.animations.loading)
-  explosion.anchor.x = explosion.width / 2
-  explosion.anchor.y = explosion.height / 2
+  const explosion = new PIXI.extras.AnimatedSprite(resources.loading.data.animations.loading)
+  explosion.scale.x = explosion.scale.y = 0.5
   explosion.animationSpeed = 0.5
 
   explosion.play()

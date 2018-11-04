@@ -7,7 +7,7 @@ PIXI.sound.utils.extensions.splice(PIXI.sound.utils.extensions.indexOf('mp4'), 1
 PIXI.loaders.Resource.setExtensionXhrType('mp4', undefined)
 PIXI.loaders.Resource.setExtensionLoadType('mp4', PIXI.loaders.Resource.LOAD_TYPE.VIDEO)
 
-export default (_) => {
+export default _ => {
   const resources = PIXI.loader.resources
   let skip = new PIXI.Sprite(resources['video-skip'].texture)
   let video = PIXI.loader.resources.video.data
