@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 const __loader = PIXI.loader
-export default _ => new Promise((resolve, _) => __preloadResources().load(()=>resolve()))
+export default () => new Promise((resolve, _) => __preloadResources().load(()=>resolve()))
 
 function __preloadResources(loader = __loader) {
   loader.add("decorator", require("./assets/loading-decorator.png"))

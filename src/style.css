@@ -4,10 +4,12 @@ video{
   left: 0;
   overflow: hidden;
   object-fit: cover;
-  width: 1500px;
-  height: 750px;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
 }
+
+
 .main{
   display: inline-block;
 }
@@ -22,8 +24,10 @@ canvas{
 @media only screen and (orientation:portrait){
  video{
     position: absolute;
+    width: 100vh;
+    height: 100vw;
     top: 0;
-    left:750px;
+    left:100vw;
     transform: rotate(90deg);
     transform-origin: left top;
   }
