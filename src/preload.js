@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 const __loader = PIXI.loader
+require('./assets/loading.png')
 export default () => new Promise((resolve, _) => __preloadResources().load(()=>resolve()))
 
 function __preloadResources(loader = __loader) {
