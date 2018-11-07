@@ -87,7 +87,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: '[name]-[hash:8].[ext]',
+          name: '[name].[ext]',
         },
       }, {
         // for inline svg in template, opt svg by hand(ImageOptim)

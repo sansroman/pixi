@@ -33,7 +33,6 @@ export default () => {
   return () => {
     if (document.querySelector('video')) document.querySelector('.main').replaceChild(video, document.querySelector('video'))
     else  video = document.querySelector('.main').appendChild(video)
-    console.log(resources.sound.sound)
     resources.sound.sound.play()
     video.muted = true
     video.load()
