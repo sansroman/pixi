@@ -5,17 +5,17 @@ import { register, load } from './manager/ScenesManager'
 import {testOrientation, calScale} from './lib/test'
 import './style.css'
 
-const loading = 'LOADING'
+const LOADING = 'LOADING'
 
 
 let app = new PIXI.Application({
- transparent: true
+  transparent: true
 });
 app.width = 1280
 app.height = 720
 window.app = app
-window.addEventListener('resize',()=>testOrientation())
+window.addEventListener('resize',testOrientation)
 document.querySelector('.main').appendChild(app.view)
 calScale()
 testOrientation()
-preloadResource().then(register(loading, loadingScene)).then(() => load(loading))
+preloadResource().then(register(LOADING, loadingScene)).then(() => load(LOADING))

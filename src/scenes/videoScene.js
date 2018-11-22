@@ -1,8 +1,11 @@
 import * as PIXI from 'pixi.js'
 import 'pixi-sound'
-import { load, clear } from '../manager/ScenesManager';
+import {
+  load,
+  clear
+} from '../manager/ScenesManager';
 
-const finishedScene = 'FINISHED'
+const FINISHEDSCENE = 'FINISHED'
 PIXI.sound.utils.extensions.splice(PIXI.sound.utils.extensions.indexOf('mp4'), 1)
 PIXI.loaders.Resource.setExtensionXhrType('mp4', undefined)
 PIXI.loaders.Resource.setExtensionLoadType('mp4', PIXI.loaders.Resource.LOAD_TYPE.VIDEO)
@@ -13,18 +16,20 @@ export default () => {
   let skip = new PIXI.Sprite(resources['video-skip'].texture)
   let video = PIXI.loader.resources.video.data
   skip.scale.set(0.6, 0.6)
-  skip.position.set(app.width - skip.width * 2, 50  - viewport.y)
+  skip.position.set(app.width - skip.width * 2, 50 - viewport.y)
   skip.interactive = true
 
   const afterVideo = (skip) => () => {
     clear()
-    load(finishedScene, {skip})
+    load(FINISHEDSCENE, {
+      skip
+    })
   }
-  const cb = (e) => {
-      if(e.timeStamp >= 43 * 1000){
-        afterVideo()()
-        e.currentTarget.removeEventListener(e.type,cb)
-      }
+  const cb = e => {
+    if (video.currentTime >= 43 * 1000) {
+      afterVideo()()
+      e.currentTarget.removeEventListener(e.type, cb)
+    }
   }
   skip.on('pointerdown', afterVideo(true))
   video.addEventListener('timeupdate', cb)
@@ -32,7 +37,7 @@ export default () => {
 
   return () => {
     if (document.querySelector('video')) document.querySelector('.main').replaceChild(video, document.querySelector('video'))
-    else  video = document.querySelector('.main').appendChild(video)
+    else video = document.querySelector('.main').appendChild(video)
     resources.sound.sound.play()
     video.muted = true
     video.load()
